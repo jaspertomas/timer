@@ -4,6 +4,8 @@
  */
 package timer;
 
+import java.io.File;
+
 class RunnableDemo implements Runnable {
    private Thread t;
    private Integer seconds;
@@ -12,6 +14,14 @@ class RunnableDemo implements Runnable {
    RunnableDemo(String name,Integer seconds){
        this.seconds=seconds;
        this.name=name;
+       if(new File(Constants.mp3Location1+"alarm.mp3").exists())
+       {
+           mp3=new MP3(Constants.mp3Location1+"alarm.mp3");
+       }
+       else if(new File(Constants.mp3Location2+"alarm.mp3").exists())
+       {
+           mp3=new MP3(Constants.mp3Location2+"alarm.mp3");
+       }
    }
    public void run() {
       try 
@@ -40,5 +50,5 @@ class RunnableDemo implements Runnable {
        stopped=true;
        mp3.close();
    }
-    MP3 mp3=new MP3("alarm.mp3");
+    MP3 mp3;
 }
