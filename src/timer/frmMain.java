@@ -4,6 +4,7 @@
  */
 package timer;
 
+import java.util.ArrayList;
 import javax.swing.JLabel;
 
 /**
@@ -24,13 +25,13 @@ public class frmMain extends javax.swing.JFrame {
 
     public void start1()
     {
-//                if(R1!=null)R1.stop();
+                if(R1!=null){oldR1s.add(R1);}
               R1 = new RunnableDemo("A",Integer.valueOf(txtSeconds1.getText()));
               R1.start();
     }
     public void start2()
     {
-//                if(R2!=null)R2.stop();
+                if(R2!=null){oldR1s.add(R2);}
               R2 = new RunnableDemo("B",Integer.valueOf(txtSeconds2.getText()));
               R2.start();
     }
@@ -186,6 +187,7 @@ public class frmMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     RunnableDemo R1=null;
+    ArrayList<RunnableDemo> oldR1s=new ArrayList<RunnableDemo>();
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
               start1();
     }//GEN-LAST:event_btnStart1ActionPerformed
@@ -194,16 +196,25 @@ public class frmMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSeconds1ActionPerformed
     RunnableDemo R2=null;
+    ArrayList<RunnableDemo> oldR2s=new ArrayList<RunnableDemo>();
     private void btnStart2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart2ActionPerformed
               start2();
     }//GEN-LAST:event_btnStart2ActionPerformed
 
     private void btnStop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStop1ActionPerformed
-        if(R1!=null){R1.stop();}
+        R1.stop();
+        for(RunnableDemo oldR1: oldR1s)
+        {
+            oldR1.stop();
+        }
     }//GEN-LAST:event_btnStop1ActionPerformed
 
     private void btnStop2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStop2ActionPerformed
-        if(R2!=null){R2.stop();}
+        R2.stop();
+        for(RunnableDemo oldR2: oldR2s)
+        {
+            oldR2.stop();
+        }
     }//GEN-LAST:event_btnStop2ActionPerformed
 
     /**
