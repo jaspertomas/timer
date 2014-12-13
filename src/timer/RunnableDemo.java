@@ -22,6 +22,10 @@ class RunnableDemo implements Runnable {
        {
            mp3=new MP3(Constants.mp3Location2+"alarm.mp3");
        }
+       else if(new File(Constants.mp3Location3+"alarm.mp3").exists())
+       {
+           mp3=new MP3(Constants.mp3Location3+"alarm.mp3");
+       }
    }
    public void run() {
       try 
@@ -33,7 +37,14 @@ class RunnableDemo implements Runnable {
               if(stopped) {break;}
           }
             frmMain.getInstance().getLblCountdown(name).setText("0");
-            if(!stopped)mp3.play();
+            if(!stopped)
+            {
+                mp3.play();
+                if(name.contentEquals("A"))
+                    frmMain.getInstance().start1();
+                else
+                    frmMain.getInstance().start2();
+            }
       } catch (InterruptedException e) {}
    }
    

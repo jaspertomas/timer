@@ -12,5 +12,6 @@ public class Constants {
     public static String mp3Location1=frmMain.class.getProtectionDomain()
                          .getCodeSource().getLocation().getPath().replace("Timer.jar", "");
     public static String mp3Location2=mp3Location1+"../";
+    public static String mp3Location3=mp3Location2+"../";
 
 }

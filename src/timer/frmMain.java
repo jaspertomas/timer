@@ -18,6 +18,21 @@ public class frmMain extends javax.swing.JFrame {
     public frmMain() {
         initComponents();
         instance=this;
+    
+        start1();
+    }
+
+    public void start1()
+    {
+//                if(R1!=null)R1.stop();
+              R1 = new RunnableDemo("A",Integer.valueOf(txtSeconds1.getText()));
+              R1.start();
+    }
+    public void start2()
+    {
+//                if(R2!=null)R2.stop();
+              R2 = new RunnableDemo("B",Integer.valueOf(txtSeconds2.getText()));
+              R2.start();
     }
     
     static frmMain instance;
@@ -39,25 +54,25 @@ public class frmMain extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnStart1 = new javax.swing.JButton();
         txtSeconds1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtSeconds2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnStart2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblCountdown2 = new javax.swing.JLabel();
         lblCountdown1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnStop1 = new javax.swing.JButton();
+        btnStop2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Start");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnStart1.setText("Start");
+        btnStart1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnStart1ActionPerformed(evt);
             }
         });
 
@@ -78,10 +93,10 @@ public class frmMain extends javax.swing.JFrame {
         txtSeconds2.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         txtSeconds2.setText("60");
 
-        jButton2.setText("Start");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnStart2.setText("Start");
+        btnStart2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnStart2ActionPerformed(evt);
             }
         });
 
@@ -96,17 +111,17 @@ public class frmMain extends javax.swing.JFrame {
         lblCountdown1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         lblCountdown1.setText("0");
 
-        jButton3.setText("Stop");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnStop1.setText("Stop");
+        btnStop1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnStop1ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Stop");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnStop2.setText("Stop");
+        btnStop2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnStop2ActionPerformed(evt);
             }
         });
 
@@ -129,15 +144,15 @@ public class frmMain extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
-                                .add(jButton1)
+                                .add(btnStart1)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jButton3)
+                                .add(btnStop1)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 44, Short.MAX_VALUE)
                                 .add(lblCountdown1))
                             .add(layout.createSequentialGroup()
-                                .add(jButton2)
+                                .add(btnStart2)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jButton4)
+                                .add(btnStop2)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .add(lblCountdown2))))
                     .add(jLabel4))
@@ -151,17 +166,17 @@ public class frmMain extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(txtSeconds1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton1)
+                    .add(btnStart1)
                     .add(jLabel1)
                     .add(lblCountdown1)
-                    .add(jButton3))
+                    .add(btnStop1))
                 .add(8, 8, 8)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel3)
                     .add(txtSeconds2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jButton2)
+                    .add(btnStart2)
                     .add(lblCountdown2)
-                    .add(jButton4))
+                    .add(btnStop2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 65, Short.MAX_VALUE)
                 .add(jLabel4)
                 .addContainerGap())
@@ -170,29 +185,26 @@ public class frmMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    RunnableDemo R1;
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-              R1 = new RunnableDemo("A",Integer.valueOf(txtSeconds1.getText()));
-              R1.start();
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    RunnableDemo R1=null;
+    private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
+              start1();
+    }//GEN-LAST:event_btnStart1ActionPerformed
 
     private void txtSeconds1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSeconds1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSeconds1ActionPerformed
-    RunnableDemo R2;
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-              R2 = new RunnableDemo("B",Integer.valueOf(txtSeconds2.getText()));
-              R1.start();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    RunnableDemo R2=null;
+    private void btnStart2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart2ActionPerformed
+              start2();
+    }//GEN-LAST:event_btnStart2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnStop1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStop1ActionPerformed
         if(R1!=null){R1.stop();}
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnStop1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnStop2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStop2ActionPerformed
         if(R2!=null){R2.stop();}
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnStop2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,10 +241,10 @@ public class frmMain extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnStart1;
+    private javax.swing.JButton btnStart2;
+    private javax.swing.JButton btnStop1;
+    private javax.swing.JButton btnStop2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
