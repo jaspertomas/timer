@@ -42,7 +42,7 @@ class RunnableDemo implements Runnable {
                 mp3.play();
                 
                 //restart countdown
-                if(name.contentEquals("A"))
+                if(name.contentEquals("B"))
                     frmMain.getInstance().start1();
                 else
                     frmMain.getInstance().start2();
