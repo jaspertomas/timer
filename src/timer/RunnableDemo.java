@@ -11,20 +11,25 @@ class RunnableDemo implements Runnable {
    private Integer seconds;
    private String name;
    private Boolean stopped=false;
+   private MP3 workMP3;
+   private MP3 restMP3;
    RunnableDemo(String name,Integer seconds){
        this.seconds=seconds;
        this.name=name;
-       if(new File(Constants.mp3Location1+"alarm.mp3").exists())
+       if(new File(Constants.mp3Location1+"work.mp3").exists())
        {
-           mp3=new MP3(Constants.mp3Location1+"alarm.mp3");
+           workMP3=new MP3(Constants.mp3Location1+"work.mp3");
+           restMP3=new MP3(Constants.mp3Location1+"rest.mp3");
        }
-       else if(new File(Constants.mp3Location2+"alarm.mp3").exists())
+       else if(new File(Constants.mp3Location2+"work.mp3").exists())
        {
-           mp3=new MP3(Constants.mp3Location2+"alarm.mp3");
+           workMP3=new MP3(Constants.mp3Location2+"work.mp3");
+           restMP3=new MP3(Constants.mp3Location2+"rest.mp3");
        }
-       else if(new File(Constants.mp3Location3+"alarm.mp3").exists())
+       else if(new File(Constants.mp3Location3+"work.mp3").exists())
        {
-           mp3=new MP3(Constants.mp3Location3+"alarm.mp3");
+           workMP3=new MP3(Constants.mp3Location3+"work.mp3");
+           restMP3=new MP3(Constants.mp3Location3+"rest.mp3");
        }
    }
    public void run() {
@@ -39,13 +44,17 @@ class RunnableDemo implements Runnable {
             frmMain.getInstance().getLblCountdown(name).setText("0");
             if(!stopped)
             {
-                mp3.play();
-                
                 //restart countdown
                 if(name.contentEquals("B"))
+                {
+                    workMP3.play();
                     frmMain.getInstance().start1();
+                }
                 else
+                {
+                    restMP3.play();
                     frmMain.getInstance().start2();
+                }
             }
       } catch (InterruptedException e) {}
    }
@@ -61,7 +70,13 @@ class RunnableDemo implements Runnable {
    public void stop ()
    {
        stopped=true;
-       mp3.close();
+        if(name.contentEquals("B"))
+        {
+            workMP3.close();
+        }
+        else
+        {
+            restMP3.close();
+        }
    }
-    MP3 mp3;
 }
