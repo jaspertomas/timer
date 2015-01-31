@@ -35,6 +35,15 @@ class RunnableDemo implements Runnable {
    public void run() {
       try 
       {
+            //restart countdown
+            if(name.contentEquals("B"))
+            {
+                restMP3.play();
+            }
+            else
+            {
+                workMP3.play();
+            }
           for(int i=0;i<seconds; i++)
           {
               frmMain.getInstance().getLblCountdown(name).setText(String.valueOf((seconds-i)));
@@ -47,12 +56,10 @@ class RunnableDemo implements Runnable {
                 //restart countdown
                 if(name.contentEquals("B"))
                 {
-                    workMP3.play();
                     frmMain.getInstance().start1();
                 }
                 else
                 {
-                    restMP3.play();
                     frmMain.getInstance().start2();
                 }
             }
@@ -72,11 +79,11 @@ class RunnableDemo implements Runnable {
        stopped=true;
         if(name.contentEquals("B"))
         {
-            workMP3.close();
+            restMP3.close();
         }
         else
         {
-            restMP3.close();
+            workMP3.close();
         }
    }
 }
